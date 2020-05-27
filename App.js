@@ -1,16 +1,30 @@
-import * as React from "react";
-import { View, Text } from "react-native";
+import React from 'react'
+import { NativeRouter as Router, Route, Switch } from 'react-router-native'
+import { View, StyleSheet } from 'react-native'
+import Home from './components/Home'
+import Game from './components/Game'
+import Result from './components/Result'
 
-export default function App() {
+const App = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
-  );
+    <Router>
+      <View style={styles.container}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/game" component={Game} />
+          <Route path="/result" component={Result} />
+        </Switch>
+      </View>
+    </Router>
+  )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: 'darkslateblue'
+  }
+})
+
+export default App
